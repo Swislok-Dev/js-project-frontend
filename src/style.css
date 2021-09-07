@@ -1,0 +1,16 @@
+:root {
+  --bg-color: #000;
+  --main-color: #fff;
+  --font-family: cursive;
+}
+
+img {
+  size: 200px 200px;
+}
+
+body {
+  /* background-color: var(--bg-color);
+  color: var(--main-color); */
+  text-align: center;
+}
+
