@@ -6,7 +6,7 @@ class ApiService {
   variableHere = (newVar) => {
     return fetch(this.api + "/route", {
       method: 'GET',
-      headeers: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newVar)
