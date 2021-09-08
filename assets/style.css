@@ -1,16 +1,68 @@
 :root {
-  --bg-color: #000;
-  --main-color: #fff;
-  --font-family: cursive;
+  --bg-color: grey;
+  --main-text-color: #fff;
+  --font-family: guitar-hero, strings-theory, monospace;
+}
+@font-face {
+  font-family: strings-theory;
+  src: url(StringsTheory-2yYK.ttf);
 }
 
-img {
-  size: 200px 200px;
+@font-face {
+  font-family: guitar-hero;
+  src: url(Nightmare_Hero_Normal.ttf);
 }
 
 body {
-  /* background-color: var(--bg-color);
-  color: var(--main-color); */
+  font-family: var(--font-family);
   text-align: center;
+  margin: auto;
+}
+
+#guitar-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.guitar-card {
+  border: 3px solid var(--bg-color);
+  margin: 1em;
+}
+
+.guitar-card p {
+  font-size: 2em;
+  line-height: 15px;
+}
+
+.guitar-card button {
+  font-size: 2em;
+  width: 5em;
+}
+
+.guitar-card img {
+  height: 40em;
+  width: 20em;
+  object-fit: scale-down;
+  cursor: pointer;
+}
+header {
+  font-size: 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--bg-color);
+  height: 3em;
+  place-items: center;
+  clear: both;
+}
+button{
+  font-family: var(--font-family);
+}
+
+header button{
+  font-size: 1.5rem;
+  width: 6em;
+  /* float: right; */
 }
 

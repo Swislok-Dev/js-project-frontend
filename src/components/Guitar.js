@@ -9,12 +9,14 @@ class Guitar {
 
 
   renderCard = () => {
-    const { brand, model, price, imageUrl, id} = this.data
+    const {style, brand, model, price, imageUrl, id} = this.data
     document.getElementById("guitar-container").innerHTML += `
     <div class="guitar-card" data-id=${id}>
       <img src=${imageUrl} alt=${brand, model}/>
-      <p class='guitar-name'>${brand} ${model}</p>
+      <p class='guitar-name'>${brand} </p>
+      <p>${model}</p>
       <p>Price: $${price}</p>
+      <button>Purchase</button>
     </div>
   `
   }
