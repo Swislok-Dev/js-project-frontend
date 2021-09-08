@@ -3,6 +3,12 @@ class ApiService {
     this.api = api
   }
 
+  getUsers = () => {
+    return fetch(this.api + "/users")
+    .then(response => response.json())
+  }
+
+
   getGuitars = () => {
     return fetch(this.api + "/guitars")
     .then(response => response.json())
