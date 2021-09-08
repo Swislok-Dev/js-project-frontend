@@ -3,10 +3,10 @@ class ApiService {
     this.api = api
   }
 
-  getGuitars = () => fetch(this.api + "/guitars")
-    .then(response => {return response.json()})
-    .then(json => console.log(json))
-  
+  getGuitars = () => {
+    return fetch(this.api + "/guitars")
+    .then(response => response.json())
+  }
   // variableHere = (newVar) => {
   //   return fetch(this.api + "/route", {
   //     method: 'GET',

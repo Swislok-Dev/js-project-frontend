@@ -4,7 +4,7 @@ class Guitar {
 
   constructor(data) {
     this.data = data
-    this.constuctor.all.push(this)
+    this.constructor.all.push(this)
   }
 
 
@@ -13,8 +13,8 @@ class Guitar {
     document.getElementById("guitar-container").innerHTML += `
     <div class="guitar-card" data-id=${id}>
       <img src=${imageUrl} alt=${brand, model}/>
-      <p>${brand, model}</p>
-      <p>Price: ${price}</p>
+      <p class='guitar-name'>${brand} ${model}</p>
+      <p>Price: $${price}</p>
     </div>
   `
   }
@@ -23,7 +23,6 @@ class Guitar {
 
   static getGuitars = () => {
     api.getGuitars().then(guitars => {
-      debugger
       guitars.forEach(guitar => new Guitar(guitar))
       this.renderGuitars()
     })
