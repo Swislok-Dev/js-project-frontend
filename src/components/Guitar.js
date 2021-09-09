@@ -9,13 +9,12 @@ class Guitar {
 
 
   renderCard = () => {
-    const {style, brand, model, price, imageUrl, id} = this.data
+    const {brand, model, imageUrl, id} = this.data
     document.getElementById("guitar-container").innerHTML += `
     <div class="guitar-card" data-id=${id}>
-      <img src=${imageUrl} alt=${brand, model}/>
+      <img src=${imageUrl} alt=${brand} ${model}/>
       <p class='guitar-name'>${brand} </p>
       <p>${model}</p>
-      <p>Price: $${price}</p>
       <button>Purchase</button>
     </div>
   `
@@ -35,8 +34,45 @@ class Guitar {
     main.innerHTML = ""
     const guitarContainer = document.createElement('div')
     guitarContainer.id = "guitar-container"
-    main.appendChild(guitarContainer)
+    const addPost = document.createElement('button')
+    addPost.innerText = "Add a guitar"
+    addPost.classList.add("add-guitar")
+    addPost.addEventListener("click", this.openNewProductForm)
+    main.append(addPost, guitarContainer)
     this.all.forEach(guitar => guitar.renderCard())
+  }
+
+  static handlePost = (e) => {
+    e.preventDefault()
+    debugger
+    const newPost = {
+      brand: e.target.brand.value,
+      model: e.target.model.value,
+      style: e.target.style.value,
+      image_url: e.target.imageUrl.value
+    }
+    api.newPost(newPost).then(post => new Guitar(post).renderCard())
+    modal.close()
+  }
+
+  static openNewProductForm = () => {
+    modal.main.innerHTML = `
+    <h2>Post your product</h2>
+    <form>
+      <label for="brand">Brand:</label><br>
+      <input type="text" name="brand"><br>
+      <label for="model">Model:</label><br>
+      <input type="text" name="model"><br>
+      <label for="style">Style:</label><br>
+      <input type="text" name="style"><br>
+      <label for="imageUrl">Image URL:</label><br>
+      <input type="text" name="imageUrl"></br>
+      <input type="submit" value="Post"><br>
+    </form>
+    `
+
+    modal.main.querySelector("form").addEventListener("submit", this.handlePost)
+    modal.open()
   }
 
 
