@@ -25,7 +25,7 @@ h2 {
 
 #guitar-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   justify-content: space-around;
 
 }
@@ -69,6 +69,11 @@ header button{
   font-size: 1.5rem;
   width: 6em;
   /* float: right; */
+}
+
+button.add-guitar {
+  font-size: 1.5em;
+  width: 6em;
 }
 
 .modal {
