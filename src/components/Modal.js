@@ -8,6 +8,10 @@ class Modal {
     return document.querySelector("#myModal")
   }
 
+  get main() {
+    return document.getElementById("modal-main")
+  }
+
   open = () => {
     this.modal.style.display = "block"
   }
