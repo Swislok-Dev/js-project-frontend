@@ -44,7 +44,6 @@ class Guitar {
 
   static handlePost = (e) => {
     e.preventDefault()
-    debugger
     const newPost = {
       brand: e.target.brand.value,
       model: e.target.model.value,
