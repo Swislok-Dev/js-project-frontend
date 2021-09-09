@@ -13,14 +13,14 @@ class ApiService {
     return fetch(this.api + "/guitars")
     .then(response => response.json())
   }
-  // variableHere = (newVar) => {
-  //   return fetch(this.api + "/route", {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newVar)
-  //   })
-  //   .then(response => response.json())
-  // }
+  newPost = (post) => {
+    return fetch(this.api + "/guitars", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    })
+    .then(response => response.json())
+  }
 }
