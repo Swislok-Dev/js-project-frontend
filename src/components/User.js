@@ -1,4 +1,4 @@
-class Users {
+class User {
 
   static all = [];
 
@@ -14,6 +14,12 @@ class Users {
       <p>Username: ${username}</p>
       <p>Email: ${email}</p>
     </div>`
+  }
+
+  static getUsers = () => {
+    api.getUsers().then(users => {
+      users.forEach(user => new User(user))
+    })
   }
 
   
