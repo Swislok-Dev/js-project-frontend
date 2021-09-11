@@ -10,7 +10,7 @@ class User {
   renderShowUser = () => {
     const { username, email } = this.data
     document.getElementById("main").innerHTML = `
-    <div class="show">
+    <div class="show-user">
       <p>Username: ${username}</p>
       <p>Email: ${email}</p>
     </div>`
