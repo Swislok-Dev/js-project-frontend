@@ -9,12 +9,17 @@ class Guitar {
 
 
   renderCard = () => {
-    const {brand, model, imageUrl, id} = this.data
+    const {style, brand, model, imageUrl, id, username} = this.data
+    // if (!User.username) {
+    //   username = "anon"
+    // }
     document.getElementById("guitar-container").innerHTML += `
     <div class="guitar-card" data-id=${id}>
       <img src=${imageUrl} alt=${brand} ${model}/>
       <p class='guitar-name'>${brand} </p>
       <p>${model}</p>
+      <p>${style}</p>
+      <p>Post by: ${username}</p>
       <button>Purchase</button>
     </div>
   `
@@ -39,6 +44,8 @@ class Guitar {
     addPost.classList.add("add-guitar")
     addPost.addEventListener("click", this.openNewProductForm)
     main.append(addPost, guitarContainer)
+    // debugger
+    this.all.reverse(id => this.id)
     this.all.forEach(guitar => guitar.renderCard())
   }
 
