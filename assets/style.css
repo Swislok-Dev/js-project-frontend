@@ -1,7 +1,7 @@
 :root {
   --bg-color: grey;
   --main-text-color: #fff;
-  --font-family: guitar-hero, strings-theory, monospace;
+  --font-family:  strings-theory, monospace;
 }
 @font-face {
   font-family: strings-theory;
@@ -25,7 +25,7 @@ h2 {
 
 #guitar-container {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   justify-content: space-around;
 
 }
