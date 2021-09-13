@@ -24,7 +24,7 @@ function createUsernameForm() {
 
 function handleUsernameSubmit(e) {
   e.preventDefault() 
-  const regex = /^[A-Za-z]+$/;
+  const regex = /^[A-Za-z0-9-_]+$/;
   if (e.target.username.value.match(regex)) {
     api.findOrCreateUser(e.target.username.value).then(userData => {
       user = userData
