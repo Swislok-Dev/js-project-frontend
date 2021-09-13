@@ -35,13 +35,13 @@ class Guitar {
   
   static handlePost = (e) => {
     e.preventDefault()
-    const newPost = {
+    const createGuitar = {
       brand: e.target.brand.value,
       model: e.target.model.value,
       style: e.target.style.value,
       image_url: e.target.imageUrl.value
     }
-    api.newPost(newPost).then(post => new Guitar(post).renderCard())
+    api.createGuitar(createGuitar).then(post => new Guitar(post).renderCard())
     modal.close()
     e.target.reset()
   }

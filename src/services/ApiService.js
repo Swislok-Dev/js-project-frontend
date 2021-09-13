@@ -15,7 +15,7 @@ class ApiService {
     .then(response => response.json())
   }
   
-  newPost = (post) => {
+  createGuitar = (post) => {
     post.user_id = user.id
     return fetch(this.api + "/guitars", {
       method: 'POST',
