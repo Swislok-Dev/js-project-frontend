@@ -10,9 +10,6 @@ class Guitar {
 
   renderCard = () => {
     const {style, brand, model, imageUrl, id, username} = this.data
-    // if (!User.username) {
-    //   username = "anon"
-    // }
     document.getElementById("guitar-container").innerHTML += `
     <div class="guitar-card" data-id=${id}>
       <img src=${imageUrl} alt=${brand} ${model}/>
@@ -29,9 +26,48 @@ class Guitar {
 
   static getGuitars = () => {
     api.getGuitars().then(guitars => {
+      // Guitar.all = []
       guitars.forEach(guitar => new Guitar(guitar))
       this.renderGuitars()
     })
+  }
+
+  
+  static handlePost = (e) => {
+    e.preventDefault()
+    const newPost = {
+      brand: e.target.brand.value,
+      model: e.target.model.value,
+      style: e.target.style.value,
+      image_url: e.target.imageUrl.value
+    }
+    api.newPost(newPost).then(post => new Guitar(post).renderCard())
+    modal.close()
+    e.target.reset()
+  }
+  
+  
+  static openNewProductForm = () => {
+
+    modal.main.innerHTML = `
+    <h2>Post your product</h2>
+    <form>
+    <label for="username">Username</label><br>
+    <input type="text" name="username" value=${user.username}><br>
+    <label for="brand">Brand:</label><br>
+    <input type="text" name="brand"><br>
+    <label for="model">Model:</label><br>
+    <input type="text" name="model"><br>
+    <label for="style">Style:</label><br>
+    <input type="text" name="style"><br>
+    <label for="imageUrl">Image URL:</label><br>
+    <input type="text" name="imageUrl"></br>
+    <input type="submit" value="Post"><br>
+    </form>
+    `
+    
+    modal.main.querySelector("form").addEventListener("submit", this.handlePost)
+    modal.open()
   }
 
   static renderGuitars = () => {
@@ -44,47 +80,13 @@ class Guitar {
     addPost.classList.add("add-guitar")
     addPost.addEventListener("click", this.openNewProductForm)
     main.append(addPost, guitarContainer)
-    // debugger
-    this.all.reverse(id => this.id)
     this.all.forEach(guitar => guitar.renderCard())
   }
-
-  static handlePost = (e) => {
-    e.preventDefault()
-    const newPost = {
-      brand: e.target.brand.value,
-      model: e.target.model.value,
-      style: e.target.style.value,
-      image_url: e.target.imageUrl.value
-    }
-    api.newPost(newPost).then(post => new Guitar(post).renderCard())
-    modal.close()
-  }
-
-  static openNewProductForm = () => {
-    modal.main.innerHTML = `
-    <h2>Post your product</h2>
-    <form>
-      <label for="brand">Brand:</label><br>
-      <input type="text" name="brand"><br>
-      <label for="model">Model:</label><br>
-      <input type="text" name="model"><br>
-      <label for="style">Style:</label><br>
-      <input type="text" name="style"><br>
-      <label for="imageUrl">Image URL:</label><br>
-      <input type="text" name="imageUrl"></br>
-      <input type="submit" value="Post"><br>
-    </form>
-    `
-
-    modal.main.querySelector("form").addEventListener("submit", this.handlePost)
-    modal.open()
-  }
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
 }
