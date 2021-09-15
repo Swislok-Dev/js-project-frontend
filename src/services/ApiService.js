@@ -28,9 +28,6 @@ class ApiService {
   }
   
   findOrCreateUser = (username) => {
-    // if (username === undefined || username === null) {
-    //   return
-    // }
     return fetch(this.api + "/users", {
       method: "POST",
       headers: {
