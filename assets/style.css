@@ -1,7 +1,8 @@
 :root {
   --bg-color: grey;
   --main-text-color: #fff;
-  --font-family:  strings-theory, monospace;
+  --font-family-strings:  strings-theory, monospace;
+  --font-family-guitar-hero: guitar-hero, monospace;
 }
 @font-face {
   font-family: strings-theory;
@@ -14,12 +15,12 @@
 }
 
 body {
-  font-family: var(--font-family);
   text-align: center;
   margin: auto;
 }
 
 h2 {
+  font-family: strings-theory;
   font-size: 2em;
 }
 
@@ -27,7 +28,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
+  
 }
 
 .guitar-card {
@@ -52,6 +53,7 @@ h2 {
   cursor: pointer;
 }
 header {
+  font-family: var(--font-family-guitar-hero);
   font-size: 3em;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,11 +63,11 @@ header {
   clear: both;
 }
 button{
-  font-family: var(--font-family);
   cursor: pointer;
 }
 
 header button{
+  font-family: var(--font-family);
   font-size: 1.5rem;
   width: 6em;
   /* float: right; */
@@ -74,6 +76,10 @@ header button{
 button.add-guitar {
   font-size: 1.5em;
   width: 6em;
+}
+
+button#account-button {
+  display: none;
 }
 
 .modal {
