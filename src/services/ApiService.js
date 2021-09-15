@@ -37,4 +37,14 @@ class ApiService {
     })
     .then(response => response.json())
   }
+
+  showUser = (user) => {
+    return fetch(this.api + `/users/${user.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(response => response.json())
+  }
 }
