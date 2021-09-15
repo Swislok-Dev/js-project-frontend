@@ -16,7 +16,7 @@ class Guitar {
       <p class='guitar-name'>${brand} </p>
       <p>${model}</p>
       <p>${style}</p>
-      <p>Post by: ${username}</p>
+      <p>Posted by: ${username}</p>
       <button>Purchase</button>
     </div>
   `
