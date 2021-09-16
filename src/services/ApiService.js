@@ -47,4 +47,12 @@ class ApiService {
     })
     .then(response => response.json())
   }
+
+  deleteGuitar = (guitar) => {
+    return fetch(this.api + `/guitars/${guitar.id}`, {
+      method: "DELETE",
+    })
+    .then(response => response.json())
+    .then(() => guitar.remove())
+  }
 }
