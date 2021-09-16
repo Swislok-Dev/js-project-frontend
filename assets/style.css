@@ -119,3 +119,15 @@ button#account-button {
   cursor: pointer;
 }
 
+.delete-guitar {
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.delete-guitar:hover, .delete-guitar:focus {
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
