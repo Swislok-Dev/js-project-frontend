@@ -10,6 +10,7 @@ class User {
 
   renderUser = () => {
     const { username, guitars} = this.data
+    document.getElementById("header-2").innerHTML = "Account Info"
     document.getElementById("user-container").innerHTML += `
     <div class="show-user">
       <h3>Username: ${username}</h3>
@@ -23,9 +24,20 @@ class User {
 
   static showGuitars = (guitars) => {
     return guitars.forEach(guitar => {
-      document.getElementById("user-container").innerHTML += `
-      <h3>Guitar: ${guitar.brand} ${guitar.model}</h3><br>`
-      document.getElementById("user-guitars").innerText = "Hide Guitars"
+      // debugger
+      const userContainer = document.getElementById("user-container")
+      userContainer.innerHTML += `
+      <div data-id=${guitar.id} class="ownedGuitar"
+        <h3>${guitar.brand} ${guitar.model} </h3><br>
+        <button id="delete-guitar">Delete this guitar</button>
+      </div><br>
+      `
+      document.getElementById("user-guitars").style.display = "none"
+      
+      const deleteGuitar = document.querySelector("button#delete-guitar")
+      deleteGuitar.addEventListener("click", () => {
+        debugger
+      })
     })
   }
 
@@ -59,5 +71,13 @@ class User {
     // })
   }
 
+  static deleteGuitar = () => {
+    api.deleteGuitar()
+    const deleteGuitar = document.querySelector("#delete-guitar")
+      deleteGuitar.addEventListener("click", (e) => {
+        debugger
+        console.log(e.target)
+      })
+  }
   
 }
