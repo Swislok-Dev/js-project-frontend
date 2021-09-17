@@ -22,33 +22,30 @@ class User {
     })
   }
 
-  static showGuitars = (guitars) => {
-    return guitars.forEach(guitar => {
-      // debugger
-      const userContainer = document.getElementById("user-container")
-      userContainer.innerHTML += `
-      <div data-id=${guitar.id} class="ownedGuitar"
-        <h3>${guitar.brand} ${guitar.model} </h3><br>
-        <button id="delete-guitar">Delete this guitar</button>
-      </div><br>
-      `
-      document.getElementById("user-guitars").style.display = "none"
-      
-      const deleteGuitar = document.querySelector("button#delete-guitar")
-      deleteGuitar.addEventListener("click", () => {
-        debugger
-      })
-    })
+  static renderUserGuitar = (guitar) => {
+    const { brand, model } = guitar
+    document.getElementById("user-container").innerHTML += `
+    <div class="guitar-container">
+      <h4>${brand} ${model}</h3>
+      <button>Delete this guitar</button>
+    </div>
+    `
   }
 
+  static showGuitars = (guitars) => {
+    let userGuitars = []
+    for (let i = 0; i < guitars.length; i++){
+      userGuitars.push(guitars[i])
+      document.getElementById("user-guitars").style.display = "none"
+    }
+    userGuitars.forEach((guitar) => User.renderUserGuitar(guitar))
+  }
 
   static getUsers = () => {
     api.getUsers().then(users => {
       users.forEach(user => new User(user))
     })
   }
-
-
 
   static find = (id) => this.all.find(user => user.data.id === id)
 
@@ -58,26 +55,17 @@ class User {
     const userContainer = document.createElement("div")
     userContainer.id = "user-container"
     const account = document.getElementById("account-button")
-    // const user = this.find()
     main.appendChild(userContainer)
     this.find(user.id).renderUser()
-    // account.addEventListener("click", console.log(this))
-    // this.find(user.id).renderUser()
-    // this.all.filter(users => {
-    //   debugger
-    //   console.log(this.all)
-    //   user = user.username === this.user.username
-    //   renderUser()
-    // })
   }
 
-  static deleteGuitar = () => {
-    api.deleteGuitar()
+  static deleteGuitar = (id) => {
     const deleteGuitar = document.querySelector("#delete-guitar")
-      deleteGuitar.addEventListener("click", (e) => {
-        debugger
-        console.log(e.target)
-      })
+    deleteGuitar.addEventListener("click", (e) => {
+      debugger
+      api.deleteGuitar(id)
+      console.log(e.target)
+    })
   }
   
 }
