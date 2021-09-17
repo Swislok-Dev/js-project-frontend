@@ -1,7 +1,6 @@
 class User {
 
   static all = [];
-  static main = document.getElementById("main");
 
   constructor(data) {
     this.data = data
@@ -10,6 +9,7 @@ class User {
 
   renderUser = () => {
     const { username, guitars} = this.data
+    debugger
     document.getElementById("header-2").innerHTML = "Account Info"
     document.getElementById("user-container").innerHTML += `
     <div class="show-user">
@@ -24,21 +24,36 @@ class User {
 
   static renderUserGuitar = (guitar) => {
     const { brand, model } = guitar
-    document.getElementById("user-container").innerHTML += `
-    <div class="guitar-container">
-      <h4>${brand} ${model}</h3>
-      <button>Delete this guitar</button>
-    </div>
+    const div = document.createElement("div")
+    div.classList.add("guitar-container")
+    div.setAttribute("data-id", `${guitar.id}`)
+    div.innerHTML += `
+    <h4>${brand} ${model}</h4>
     `
+    const deleteGuitarButton = document.createElement("button")
+    deleteGuitarButton.id = "delete-guitar"
+    deleteGuitarButton.innerText = "Delete this guitar"
+
+    div.appendChild(deleteGuitarButton)
+    document.getElementById("user-container").appendChild(div)
+
+    deleteGuitarButton.addEventListener("click", (e) => {
+      // debugger
+      const div = e.target.closest("div")
+      // e.target.closest("div").remove()  FRONTEND ONLY!!
+      // debugger
+      User.deleteGuitar(div)
+    })
   }
 
   static showGuitars = (guitars) => {
     let userGuitars = []
+    // debugger
     for (let i = 0; i < guitars.length; i++){
       userGuitars.push(guitars[i])
       document.getElementById("user-guitars").style.display = "none"
     }
-    userGuitars.forEach((guitar) => User.renderUserGuitar(guitar))
+    userGuitars.forEach(User.renderUserGuitar)
   }
 
   static getUsers = () => {
@@ -58,13 +73,16 @@ class User {
     this.find(user.id).renderUser()
   }
 
-  static deleteGuitar = (id) => {
+  static deleteGuitar = (div) => {
     const deleteGuitar = document.querySelector("#delete-guitar")
-    deleteGuitar.addEventListener("click", (e) => {
-      debugger
-      api.deleteGuitar(id)
-      console.log(e.target)
-    })
+    // debugger
+    api.deleteGuitar(div.dataset.id)
+    .then(() => div.remove())
+    // deleteGuitar.addEventListener("click", (e) => {
+    //   debugger
+    //   api.deleteGuitar(id)
+    //   console.log(id)
+    // })
   }
   
 }
