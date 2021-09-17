@@ -54,7 +54,6 @@ class User {
     main.innerHTML = ""
     const userContainer = document.createElement("div")
     userContainer.id = "user-container"
-    const account = document.getElementById("account-button")
     main.appendChild(userContainer)
     this.find(user.id).renderUser()
   }
