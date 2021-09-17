@@ -2,8 +2,6 @@ class ApiService {
   constructor(api) {
     this.api = api
   }
-
-  
   
   getGuitars = () => {
     return fetch(this.api + "/guitars")
@@ -48,8 +46,8 @@ class ApiService {
     .then(response => response.json())
   }
 
-  deleteGuitar = (guitar) => {
-    return fetch(this.api + `/guitars/${guitar.id}`, {
+  deleteGuitar = (id) => {
+    return fetch(this.api + `/guitars/${id}`, {
       method: "DELETE",
     })
     .then(response => response.json())
