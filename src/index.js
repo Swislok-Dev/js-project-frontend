@@ -3,9 +3,7 @@ const modal = new Modal()
 let user
 const main = document.getElementById("main")
 
-
 createUsernameForm()
-
 
 document.querySelector("form").addEventListener("submit", handleUsernameSubmit)
 
@@ -29,8 +27,6 @@ function handleUsernameSubmit(e) {
       document.getElementById("header-2").innerText = "Showcase your guitars"
       Guitar.getGuitars()
       User.getUsers()
-      // console.log(User.all)
-      
     })
   } else {
     alert("Please enter a username")
@@ -47,8 +43,5 @@ showUser(user.username)
 
 const showUser = (username) => {
   api.findOrCreateUser(username).then(userData => user = userData)
-  // User.all = []
-  // User.getUsers()
-  // debugger
-  api.getUser(user).then(User.showUser(user))
+  api.showUser(user).then(User.showUser(user))
 }
