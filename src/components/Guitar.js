@@ -26,7 +26,7 @@ class Guitar {
 
   static getGuitars = () => {
     api.getGuitars().then(guitars => {
-      // Guitar.all = []
+      Guitar.all = []
       guitars.forEach(guitar => new Guitar(guitar))
       this.renderGuitars()
     })
@@ -71,6 +71,7 @@ class Guitar {
   }
 
   static renderGuitars = () => {
+    document.getElementById("header-2").innerHTML = "Showcase your guitars"
     const main = document.getElementById('main')
     main.innerHTML = ""
     const guitarContainer = document.createElement('div')
