@@ -29,7 +29,8 @@ function handleUsernameSubmit(e) {
       document.getElementById("header-2").innerText = "Showcase your guitars"
       Guitar.getGuitars()
       User.getUsers()
-      document.getElementById("account-button").addEventListener("click", showUser)
+      // console.log(User.all)
+      
     })
   } else {
     alert("Please enter a username")
@@ -38,6 +39,16 @@ function handleUsernameSubmit(e) {
   }  
 }
 
-const showUser = () => {
-  api.showUser(user).then(User.showUser(user))
+document.getElementById("account-button").addEventListener("click", () => {
+showUser(user.username)
+
+})
+  
+
+const showUser = (username) => {
+  api.findOrCreateUser(username).then(userData => user = userData)
+  // User.all = []
+  // User.getUsers()
+  // debugger
+  api.getUser(user).then(User.showUser(user))
 }
