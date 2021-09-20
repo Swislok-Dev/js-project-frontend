@@ -9,7 +9,11 @@ class User {
 
   renderUser = () => {
     api.findOrCreateUser(user.username).then(userData => user = userData)
-    document.getElementById("header-2").innerHTML = "Account Info"
+    const header2 = document.getElementById("header-2")
+    header2.innerHTML = "Account Info<br>"
+    header2.innerHTML += `<button id="back-button">Go Back</button>`
+    document.getElementById("back-button").addEventListener("click", Guitar.getGuitars)
+  
     document.getElementById("user-container").innerHTML += `
     <div class="show-user">
       <h3>Username: ${user.username}</h3>
