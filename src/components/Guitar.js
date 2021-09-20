@@ -17,7 +17,6 @@ class Guitar {
       <p>${model}</p>
       <p>${style}</p>
       <p>Posted by: ${username}</p>
-      <button>Purchase</button>
     </div>
   `
   }
