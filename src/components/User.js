@@ -74,7 +74,6 @@ class User {
   }
 
   static deleteGuitar = (div) => {
-    const deleteGuitar = document.querySelector("#delete-guitar")
     api.deleteGuitar(div.dataset.id)
     .then(() => div.remove())
   }
