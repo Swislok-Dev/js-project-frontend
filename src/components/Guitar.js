@@ -7,6 +7,7 @@ class Guitar {
     this.constructor.all.push(this)
   }
 
+  // Render all guitars
   renderCard = () => {
     const {brand, model, imageUrl, id} = this.data
     document.getElementById("guitar-container").innerHTML += `
@@ -19,6 +20,7 @@ class Guitar {
   `
   }
 
+  // Render a single guitar
   showGuitar = () => {
     const {style, brand, model, imageUrl, id, username, createdAt} = this.data
     const header2 = document.getElementById("header-2")
@@ -39,8 +41,10 @@ class Guitar {
   `
   }
 
+  // Find method
   static find = (id) => this.all.find(guitar => guitar.data.id === id)
 
+  // Fetch guitars from database
   static getGuitars = () => {
     api.getGuitars().then(guitars => {
       Guitar.all = []
@@ -49,6 +53,7 @@ class Guitar {
     })
   }
 
+  // Click event to submit new guitar form
   static handlePost = (e) => {
     e.preventDefault()
     const createGuitar = {
@@ -62,6 +67,7 @@ class Guitar {
     e.target.reset()
   }
   
+  // Add guitar form
   static openNewProductForm = () => {
 
     modal.main.innerHTML = `
@@ -91,6 +97,7 @@ class Guitar {
     modal.open()
   }
 
+  // Render all guitar cards to page
   static renderGuitars = () => {
     document.getElementById("header-2").innerHTML = "Showcase your guitars"
     const main = document.getElementById('main')
@@ -109,6 +116,7 @@ class Guitar {
     guitarContainer.addEventListener("click", this.handleShowGuitar)
   }
 
+  // Click event listener on index of all guitars to show page
   static handleShowGuitar = (e) => {
     if (e.target.tagName == "IMG" || e.target.innerText == "View") {
       let id = e.target.closest(".guitar-card").dataset.id
