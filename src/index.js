@@ -3,12 +3,10 @@ const modal = new Modal()
 let user
 const main = document.getElementById("main")
 
-createUsernameForm()
 
-document.querySelector("form").addEventListener("submit", handleUsernameSubmit)
-
+// Function for creating a user form to login
 function createUsernameForm() {
-  main.innerHTML =`
+  main.innerText =`
   <form>
   <label for="username">Username</label><br>
   <input type="text" id="username" name="username"><br>
@@ -17,6 +15,10 @@ function createUsernameForm() {
   `
 }
 
+// Call the function to have the form be present upon loading into the page
+createUsernameForm()
+
+// Function definition for handleSubmit on user form
 function handleUsernameSubmit(e) {
   e.preventDefault()
   const regex = /^[A-Za-z0-9-_]+$/;
@@ -35,13 +37,16 @@ function handleUsernameSubmit(e) {
   }  
 }
 
-document.getElementById("account-button").addEventListener("click", () => {
-showUser(user.username)
+// Event listener for declaration of the handleSubmit for username submit button
+document.querySelector("form").addEventListener("submit", handleUsernameSubmit)
 
-})
-  
-
+// Function definition for displaying the current logged in user
 const showUser = (username) => {
   api.findOrCreateUser(username).then(userData => user = userData)
   api.showUser(user).then(User.showUser(user))
 }
+
+// Event listener for declaration of the click on the "Account" button when logged in
+document.getElementById("account-button").addEventListener("click", () => {
+  showUser(user.username)
+})
