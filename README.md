@@ -2,6 +2,12 @@
 
 This is an app that let's users create a space to show off the kind of guitars they have or just have a general interest in.
 
+## App Instructions
+
+First start the rails server, then use the following command to open the page in a browser
+
+- `open index.html`
+
 ## Usage
 
 First choose a username and that will act as a login for later logins as well which will save guitars that have been posted and deleted by the user.
