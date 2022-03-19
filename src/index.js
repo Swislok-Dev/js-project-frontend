@@ -6,7 +6,7 @@ const main = document.getElementById("main")
 
 // Function for creating a user form to login
 function createUsernameForm() {
-  main.innerText =`
+  main.innerHTML =`
   <form>
   <label for="username">Username</label><br>
   <input type="text" id="username" name="username"><br>
