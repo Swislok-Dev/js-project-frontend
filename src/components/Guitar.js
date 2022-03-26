@@ -36,7 +36,6 @@ class Guitar {
       <p>Type: ${style}</p>
       <p>Posted: ${createdAt}</p>
       <p>Posted by: ${username}</p>
-      <button>Like</button>
     </div>
   `
   }
@@ -47,8 +46,12 @@ class Guitar {
   // Fetch guitars from database
   static getGuitars = () => {
     api.getGuitars().then(guitars => {
-      Guitar.all = []
-      guitars.forEach(guitar => new Guitar(guitar))
+      if (guitars.length !== undefined) {
+        Guitar.all = []
+        guitars.forEach(guitar => new Guitar(guitar))
+      } else {
+        Guitar.all = []
+      }
       this.renderGuitars()
     })
   }
